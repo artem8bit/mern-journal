@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	body {
+		font-family: "Roboto Mono", monospace;
+		min-height: 100vh;
+		background: #ffffff8f;  /* fallback for old browsers */
+    /* background: -webkit-linear-gradient(to right, #4573a7, #396ac4);  /* Chrome 10-25, Safari 5.1-6 */
+    /*background: linear-gradient(to right, #6b829d, #123b87); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+	}
+}
