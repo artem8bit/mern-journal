@@ -15,8 +15,8 @@ export const register = async (req, res) => {
 			});
 		}
 
-		const salt = bcrypt.genSaltSync(10); // сложность хешированного пароля
-		const hash = bcrypt.hashSync(password, salt); // хэш
+		const salt = bcrypt.genSaltSync(10);
+		const hash = bcrypt.hashSync(password, salt);
 
 		const newUser = new User({
 			username,
@@ -44,7 +44,7 @@ export const register = async (req, res) => {
 };
 
 // Login user
-// 56:11
+
 
 export const login = async (req, res) => {
 	try {
@@ -111,4 +111,4 @@ export const getMe = async (req, res) => {
 	}
 };
 
-// 1:17:06
+

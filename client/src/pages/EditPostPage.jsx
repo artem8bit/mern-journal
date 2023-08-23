@@ -23,18 +23,18 @@ export const EditPostPage = () => {
 	}, [params.id]);
 
 	const submitHandler = () => {
-    try {
-      const updatedPost = new FormData()
-      updatedPost.append('title',title)
-      updatedPost.append('text',text)
-      updatedPost.append('id',params.id)
-      updatedPost.append('image',newImage)
-      dispatch(updatePost(updatedPost))
-     navigate('/posts')
-    } catch (error) {
-      console.log(error);
-    }
-  };
+		try {
+			const updatedPost = new FormData();
+			updatedPost.append("title", title);
+			updatedPost.append("text", text);
+			updatedPost.append("id", params.id);
+			updatedPost.append("image", newImage);
+			dispatch(updatePost(updatedPost));
+			navigate("/posts");
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
 	const clearFormHandler = () => {
 		setTitle("");
@@ -60,7 +60,10 @@ export const EditPostPage = () => {
 			</label>
 			<div className="flex object-cover py-2">
 				{oldImage && (
-					<img src={`http://localhost:3002/${oldImage}`} alt={oldImage.name} />
+					<img
+						src={`https://mern-journal-app.onrender.com/${oldImage}`}
+						alt={oldImage.name}
+					/>
 				)}
 				{newImage && (
 					<img src={URL.createObjectURL(newImage)} alt={oldImage.name} />
@@ -103,5 +106,3 @@ export const EditPostPage = () => {
 		</form>
 	);
 };
-
-

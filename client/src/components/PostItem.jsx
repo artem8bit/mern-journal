@@ -9,10 +9,12 @@ export const PostItem = ({ post }) => {
 	return (
 		<Link to={`/${post._id}`}>
 			<div className="flex flex-col basis-1/4 flex-grow">
-				<div className={post.ImgUrl ? "flex rounded-sm h-80" : "flex rounded-sm"}>
+				<div
+					className={post.ImgUrl ? "flex rounded-sm h-80" : "flex rounded-sm"}
+				>
 					{post.imgUrl && (
 						<img
-							src={`http://localhost:3002/${post.imgUrl}`}
+							src={`https://mern-journal-app.onrender.com/${post.imgUrl}`}
 							alt="img"
 							className="object-cover w-50 p-5"
 						/>

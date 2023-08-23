@@ -16,7 +16,10 @@ import { toast } from "react-toastify";
 
 import axios from "../utils/axios";
 import { removePost } from "../redux/features/post/postSlice";
-import { createComment, getPostComments } from "../redux/features/comment/commentSlice";
+import {
+	createComment,
+	getPostComments,
+} from "../redux/features/comment/commentSlice";
 
 export const PostPage = () => {
 	const [post, setPost] = useState(null);
@@ -44,25 +47,24 @@ export const PostPage = () => {
 			const postId = params.id;
 			dispatch(createComment({ postId, comment }));
 			setComment("");
-			console.log('true');
+			console.log("true");
 		} catch (error) {
 			console.log(error);
 		}
 	};
 
-	const fetchComments = useCallback(async() =>{
+	const fetchComments = useCallback(async () => {
 		try {
-			dispatch(getPostComments(params.id))
+			dispatch(getPostComments(params.id));
 		} catch (error) {
 			console.log(error);
 		}
-	}, [params.id,dispatch])
+	}, [params.id, dispatch]);
 
 	const fetchPost = useCallback(async () => {
 		const { data } = await axios.get(`/posts/${params.id}`);
 		setPost(data);
 	}, [params.id]);
-
 
 	useEffect(() => {
 		fetchPost();
@@ -71,7 +73,6 @@ export const PostPage = () => {
 	useEffect(() => {
 		fetchComments();
 	}, [fetchComments]);
-
 
 	if (!post) {
 		return (
@@ -95,7 +96,7 @@ export const PostPage = () => {
 						>
 							{post?.imgUrl && (
 								<img
-									src={`http://localhost:3002/${post.imgUrl}`}
+									src={`https://mern-journal-app.onrender.com/${post.imgUrl}`}
 									alt="img"
 									className="object-cover h-28"
 								/>
@@ -139,10 +140,9 @@ export const PostPage = () => {
 						)}
 					</div>
 				</div>
-				
 			</div>
 			<div className="flex justify-center gap-10 py-8">
-			<div className=" w-2/3   p-8 flex flex-col  gap-2 rounded-sm ">
+				<div className=" w-2/3   p-8 flex flex-col  gap-2 rounded-sm ">
 					<form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
 						<input
 							type="text"
@@ -159,13 +159,11 @@ export const PostPage = () => {
 							Отправить
 						</button>
 					</form>
-					{
-						comments?.map((cmt)=>(
-							<CommentItem key={cmt._id} cmt={cmt}/>
-						))
-					}
+					{comments?.map((cmt) => (
+						<CommentItem key={cmt._id} cmt={cmt} />
+					))}
 				</div>
-				</div>
+			</div>
 		</div>
 	);
 };

@@ -18,7 +18,7 @@ const UserSchema = new mongoose.Schema(
 			},
 		],
 	},
-	{ timestamps: true }, // для того, чтобы была видна дата создания поста
+	{ timestamps: true }, 
 );
 
 export default mongoose.model("User", UserSchema);

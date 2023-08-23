@@ -8,38 +8,37 @@ import {
 	getMyPosts,
 	removePost,
 	updatePost,
-	getPostComments
+	getPostComments,
 } from "../controllers/posts.js";
 
 const router = new Router();
 
 // Create Post
-// http://localhost:3002/api/posts
+// https://mern-journal-app.onrender.com/api/posts
 router.post("/", checkAuth, createPost);
 
 // Get All Post
-// http://localhost:3002/api/posts
+// https://mern-journal-app.onrender.com/api/posts
 router.get("/", getAll);
 
 // get post by id
-// http://localhost:3002/api/posts:id
+// https://mern-journal-app.onrender.com/api/posts:id
 router.get("/:id", getById);
 
 // update post
-// http://localhost:3002/api/posts:id
-router.put("/:id",checkAuth,updatePost);
+// https://mern-journal-app.onrender.com/api/posts:id
+router.put("/:id", checkAuth, updatePost);
 
 // get my post
-// http://localhost:3002/api/posts/user/me
+// https://mern-journal-app.onrender.com/api/posts/user/me
 router.get("/user/me", checkAuth, getMyPosts);
 
 // remove post
-// http://localhost:3002/api/posts/:id
+// https://mern-journal-app.onrender.com/api/posts/:id
 router.delete("/:id", checkAuth, removePost);
 
 // get post comments
-// http://localhost:3002/api/comments/:id
+// https://mern-journal-app.onrender.com/api/comments/:id
 router.get("/comments/:id", getPostComments);
-
 
 export default router;
