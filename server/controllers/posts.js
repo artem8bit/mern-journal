@@ -1,5 +1,6 @@
 import Post from "../models/Post.js";
 import User from "../models/User.js";
+import fs from 'fs'
 import Comment from "../models/Comment.js";
 import path,{dirname} from 'path'
 import { fileURLToPath } from "url";
@@ -14,8 +15,13 @@ export const createPost = async (req,res)=>{
   if(req.files){
       let fileName = Date.now().toString() + req.files.image.name
       const __dirname = dirname(fileURLToPath(import.meta.url))
-      req.files.image.mv(path.join(__dirname, '..', 'uploads', fileName))
+      const uploadsPath = path.join(__dirname, '..', 'uploads');
+      // Проверяем, существует ли папка uploads, и создаем ее, если нет
+      if (!fs.existsSync(uploadsPath)) {
+        fs.mkdirSync(uploadsPath);
+      }
 
+      req.files.image.mv(path.join(__dirname, '..', 'uploads', fileName))
       const newPostWithImage = new Post({
         username:user.username,
         title,
